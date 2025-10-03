@@ -46,16 +46,6 @@ const departments = [
     description: "Weekly progress and team updates",
     animation: "collaboration",
   },
-  // {
-  //   id: "praxicon",
-  //   title: "Praxicon Events",
-  //   subtitle: "Experience Theater",
-  //   icon: Sparkles,
-  //   color: "from-yellow-400 to-orange-600",
-  //   meetLink: "https://meet.google.com/hhj-qazh-hzm",
-  //   description: "Immersive event experiences",
-  //   animation: "events",
-  // },
   {
     id: "conference",
     title: "Conference Room 2",
@@ -387,7 +377,7 @@ function ConferenceAnimation() {
   }, [])
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-16 w-full max-w-2xl mx-auto">
+    <div className="flex flex-col items-center justify-center space-y-8 w-full max-w-2xl mx-auto py-4">
       {/* Central Innovation Symbol */}
       <div className="relative flex items-center justify-center">
         {/* Main Circle */}
@@ -579,8 +569,8 @@ export default function SciGenOfficeSelector() {
           </div>
 
           {/* Animation Area */}
-          <div className="flex-1 flex flex-col items-center justify-center p-12 space-y-12">
-            <div className="flex-1 flex items-center justify-center">
+          <div className="flex-1 flex flex-col items-center justify-center p-12 space-y-12 overflow-y-auto">
+            <div className="flex items-center justify-center py-8">
               <DepartmentAnimation type={selectedDepartment?.animation || ""} />
             </div>
 
