@@ -52,7 +52,7 @@ const departments = [
     subtitle: "Collaboration Nexus",
     icon: Presentation,
     color: "from-indigo-400 to-purple-600",
-    meetLink: "https://meet.google.com/qop-vvxi-nmq",
+    meetLink: "https://meet.google.com/xij-rqgw-aat",
     description: "Advanced meeting environment",
     animation: "conference",
   },
