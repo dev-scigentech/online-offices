@@ -459,14 +459,14 @@ export default function SciGenOfficeSelector() {
   const selectedDepartment = departments.find((d) => d.id === selectedDept)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+    <div className="h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
       <ParticleField />
 
-      <div className="relative z-10 flex h-screen">
+      <div className="relative z-10 flex h-full">
         {/* Left Sidebar */}
-        <div className="w-80 bg-slate-900/80 backdrop-blur-xl border-r border-slate-700 flex flex-col">
+        <div className="w-80 shrink-0 bg-slate-900/80 backdrop-blur-xl border-r border-slate-700 flex flex-col overflow-y-auto">
           {/* Header */}
-          <div className="p-6 border-b border-slate-700">
+          <div className="p-6 border-b border-slate-700 shrink-0">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-xl flex items-center justify-center">
                 <Building2 className="w-6 h-6 text-white" />
@@ -481,7 +481,7 @@ export default function SciGenOfficeSelector() {
           </div>
 
           {/* Department Menu */}
-          <div className="flex-1 p-6">
+          <div className="flex-1 p-6 overflow-y-auto">
             <h2 className="text-lg font-semibold text-white mb-6">SELECT DEPARTMENT</h2>
             <div className="space-y-3">
               {departments.map((dept, index) => {
@@ -549,9 +549,9 @@ export default function SciGenOfficeSelector() {
         </div>
 
         {/* Main Content Area */}
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col overflow-hidden">
           {/* Top Bar */}
-          <div className="p-6 border-b border-slate-700 bg-slate-900/50 backdrop-blur-xl">
+          <div className="p-6 border-b border-slate-700 bg-slate-900/50 backdrop-blur-xl shrink-0">
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-3xl font-bold text-white">
@@ -565,7 +565,7 @@ export default function SciGenOfficeSelector() {
           </div>
 
           {/* Animation Area */}
-          <div className="flex-1 flex flex-col items-center justify-center p-12 space-y-12 overflow-y-auto">
+          <div className="flex-1 min-h-0 flex flex-col items-center justify-center p-12 space-y-12 overflow-y-auto">
             <div className="flex items-center justify-center py-8">
               <DepartmentAnimation type={selectedDepartment?.animation || ""} />
             </div>
