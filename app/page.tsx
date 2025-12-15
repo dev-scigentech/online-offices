@@ -9,7 +9,7 @@ const departments = [
   {
     id: "support",
     title: "Support Office",
-    subtitle: "Tech Assistance Hub",
+    subtitle: "Technical Assistance Hub",
     icon: Headphones,
     color: "from-cyan-400 to-blue-600",
     meetLink: "https://meet.google.com/sce-ptnm-yge",
@@ -39,7 +39,7 @@ const departments = [
   {
     id: "friday",
     title: "Friday Meeting",
-    subtitle: "Progress Review",
+    subtitle: "Progress Review Chamber",
     icon: Users,
     color: "from-orange-400 to-red-600",
     meetLink: "https://meet.google.com/uvk-nbby-uta",
@@ -47,14 +47,34 @@ const departments = [
     animation: "collaboration",
   },
   {
-    id: "conference",
+    id: "praxicon",
+    title: "Praxicon Events",
+    subtitle: "Experience Theater",
+    icon: Sparkles,
+    color: "from-yellow-400 to-orange-600",
+    meetLink: "https://meet.google.com/hhj-qazh-hzm",
+    description: "Immersive event experiences",
+    animation: "events",
+  },
+  {
+    id: "conference1",
+    title: "Conference Room 1",
+    subtitle: "Meeting Space",
+    icon: Presentation,
+    color: "from-blue-400 to-indigo-600",
+    meetLink: "https://meet.google.com/izm-nwoe-myw",
+    description: "Professional meeting environment",
+    animation: "conference1",
+  },
+  {
+    id: "conference2",
     title: "Conference Room 2",
-    subtitle: "Collaboration Nexus",
+    subtitle: "Collaboration Space",
     icon: Presentation,
     color: "from-indigo-400 to-purple-600",
-    meetLink: "https://meet.google.com/xij-rqgw-aat",
-    description: "Advanced meeting environment",
-    animation: "conference",
+    meetLink: "https://meet.google.com/aex-xdwm-ktb",
+    description: "Team collaboration environment",
+    animation: "conference2",
   },
 ]
 
@@ -355,78 +375,52 @@ function EventsAnimation() {
   )
 }
 
-function ConferenceAnimation() {
-  const [currentIdea, setCurrentIdea] = useState(0)
-  const [glowIntensity, setGlowIntensity] = useState(0.3)
-
-  const ideas = ["Innovation", "Breakthrough", "Solution", "Discovery", "Vision"]
-
-  useEffect(() => {
-    const ideaTimer = setInterval(() => {
-      setCurrentIdea((prev) => (prev + 1) % ideas.length)
-    }, 3000)
-
-    const glowTimer = setInterval(() => {
-      setGlowIntensity((prev) => (prev === 0.3 ? 0.8 : 0.3))
-    }, 1500)
-
-    return () => {
-      clearInterval(ideaTimer)
-      clearInterval(glowTimer)
-    }
-  }, [])
-
+function Conference1Animation() {
   return (
-    <div className="flex flex-col items-center justify-center space-y-8 w-full max-w-2xl mx-auto py-4">
-      {/* Central Innovation Symbol */}
-      <div className="relative flex items-center justify-center">
-        {/* Main Circle */}
-        <div
-          className="w-48 h-48 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center transition-all duration-1500 shadow-2xl"
-          style={{
-            boxShadow: `0 0 ${glowIntensity * 100}px rgba(99, 102, 241, ${glowIntensity})`,
-          }}
-        >
-          {/* Inner Content */}
-          <div className="text-center">
-            <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                <div className="w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full animate-pulse" />
-              </div>
-            </div>
-            <div className="text-white font-bold text-xl transition-all duration-500" key={currentIdea}>
-              {ideas[currentIdea]}
-            </div>
-          </div>
+    <div className="flex flex-col items-center justify-center space-y-8 w-full max-w-2xl mx-auto">
+      {/* Simple Conference Icon */}
+      <div className="relative">
+        <div className="w-32 h-32 rounded-2xl bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center shadow-2xl">
+          <Presentation className="w-16 h-16 text-white" />
         </div>
-
-        {/* Orbiting Elements */}
-        {[0, 1, 2].map((i) => (
-          <div
-            key={i}
-            className="absolute w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full"
-            style={{
-              animation: `orbit ${8 + i * 2}s linear infinite`,
-              transformOrigin: "120px",
-            }}
-          />
-        ))}
+        <div className="absolute -top-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
+          <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
+        </div>
       </div>
 
-      {/* Simple Status */}
-      <div className="text-center space-y-6">
-        <div className="text-3xl font-bold text-indigo-400">Conference Room 2</div>
-        <div className="text-lg text-slate-400">Innovation Hub</div>
+      {/* Status */}
+      <div className="text-center space-y-4">
+        <div className="text-3xl font-bold text-blue-400">Conference Room 1</div>
+        <div className="text-lg text-slate-400">Professional Meeting Space</div>
+        <div className="flex items-center justify-center space-x-2 text-green-400">
+          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+          <span>Available</span>
+        </div>
+      </div>
+    </div>
+  )
+}
 
-        <div className="flex items-center justify-center space-x-8">
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
-            <span className="text-green-400">Active</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-indigo-400 rounded-full animate-pulse" />
-            <span className="text-indigo-400">Innovating</span>
-          </div>
+function Conference2Animation() {
+  return (
+    <div className="flex flex-col items-center justify-center space-y-8 w-full max-w-2xl mx-auto">
+      {/* Simple Conference Icon */}
+      <div className="relative">
+        <div className="w-32 h-32 rounded-2xl bg-gradient-to-br from-indigo-400 to-purple-600 flex items-center justify-center shadow-2xl">
+          <Users className="w-16 h-16 text-white" />
+        </div>
+        <div className="absolute -top-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
+          <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
+        </div>
+      </div>
+
+      {/* Status */}
+      <div className="text-center space-y-4">
+        <div className="text-3xl font-bold text-indigo-400">Conference Room 2</div>
+        <div className="text-lg text-slate-400">Team Collaboration Space</div>
+        <div className="flex items-center justify-center space-x-2 text-green-400">
+          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+          <span>Available</span>
         </div>
       </div>
     </div>
@@ -445,8 +439,10 @@ function DepartmentAnimation({ type }: { type: string }) {
       return <CollaborationAnimation />
     case "events":
       return <EventsAnimation />
-    case "conference":
-      return <ConferenceAnimation />
+    case "conference1":
+      return <Conference1Animation />
+    case "conference2":
+      return <Conference2Animation />
     default:
       return (
         <div className="flex flex-col items-center justify-center h-64 text-center">
